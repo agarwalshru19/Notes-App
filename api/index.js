@@ -18,7 +18,7 @@ db.connect((err) => {
 });
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://notes-app-frontend-wmg5.onrender.com", credentials: true }));
 
 app.use(express.json());
 app.use(cookieParser());
