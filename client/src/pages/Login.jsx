@@ -42,7 +42,7 @@ const Login = () => {
     try {
       dispatch(signInStart());
       const res = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "https://notes-app-backend-ur7v.onrender.com/api/auth/login",
         { email: inputs.email, password: inputs.password },
         { withCredentials: true }
       );
