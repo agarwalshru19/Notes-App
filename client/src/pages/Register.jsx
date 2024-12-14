@@ -42,7 +42,7 @@ const Register = () => {
     //register api
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        "https://notes-app-backend-ur7v.onrender.com/api/auth/register",
         {
           username: inputs.username,
           email: inputs.email,
