@@ -61,7 +61,7 @@ export const login = async (req, res) => {
   httpOnly: true,
   secure: true, // Enable in production
   sameSite: "None", // Required for cross-origin cookies
-});
+})
 
       .status(200)
       .json({
