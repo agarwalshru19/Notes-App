@@ -57,10 +57,12 @@ export const login = async (req, res) => {
     const { password: dbPass, ...other } = rows[0];
 
     // Send token in an HTTP-only cookie and user data in response
-    res
-      .cookie("access_token", token, {
-        httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
-      })
+   res.cookie("access_token", token, {
+  httpOnly: true,
+  secure: true, // Enable in production
+  sameSite: "None", // Required for cross-origin cookies
+});
+
       .status(200)
       .json({
         success: true,
