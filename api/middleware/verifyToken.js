@@ -12,6 +12,7 @@ const verifyToken = async (req, res, next) => {
       if (userDataFromStorage) {
         const user = JSON.parse(userDataFromStorage); // Parse the persisted user data
         req.user = user.currentUser.other.id; // Use the user info from persisted state
+        console.log("User data from header:", req.user);
         return next();  // Allow the request to continue
       }
 
@@ -29,3 +30,4 @@ const verifyToken = async (req, res, next) => {
 };
 
 export default verifyToken;
+
