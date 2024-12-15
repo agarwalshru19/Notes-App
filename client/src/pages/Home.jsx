@@ -10,10 +10,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Empty from "../components/Empty.jsx";
 import imgsrc from "../assets/imgsrc.png";
-import { useDispatch } from "react-redux";
-import {
-  signOutSuccess
-} from "../redux/userSlice.js";
+
 
 const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -21,7 +18,7 @@ const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
   const [openModal, setOpenModal] = useState({
     isShown: false,
     type: "add",
@@ -33,24 +30,13 @@ const Home = () => {
 
  
 useEffect(() => {
-    const jwtToken = document.cookie.split("; ").find((row) =>
-      row.startsWith("access_token=")
-    );
-
-    if (!jwtToken) {
-      // Token is missing in cookies; reset currentUser to null
-      dispatch(signOutSuccess()); // Reset currentUser to null in Redux store
-      navigate("/login"); // Redirect to login page
+    if (currentUser === null) {
+      navigate("/login");
     } else {
-      // Token exists, validate it (or proceed to fetch user data)
-      if (currentUser === null) {
-        navigate("/login"); // Ensure user is authenticated if currentUser is null
-      } else {
-        setUserInfo(currentUser?.other); // Set user info from Redux store
-        getAllNotes(); // Fetch notes if authenticated
-      }
+      setUserInfo(currentUser?.other);
+      getAllNotes();
     }
-  }, [currentUser, navigate, dispatch]); 
+  }, [currentUser]);
  
 
   //get all notes
