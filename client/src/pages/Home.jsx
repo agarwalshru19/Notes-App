@@ -25,16 +25,27 @@ const Home = () => {
 
   const [isSearch, setIsSearch] = useState(false);
 
-  useEffect(() => {
-    if (currentUser === null) {
-      navigate("/login");
-    } else {
-      setUserInfo(currentUser?.other);
-      getAllNotes();
-    }
-  }, [currentUser,navigate]);
- 
 
+ 
+useEffect(() => {
+    const jwtToken = document.cookie.split("; ").find((row) =>
+      row.startsWith("access_token=")
+    );
+
+    if (!jwtToken) {
+      // Token is missing in cookies; reset currentUser to null
+      dispatch(signOutSuccess()); // Reset currentUser to null in Redux store
+      navigate("/login"); // Redirect to login page
+    } else {
+      // Token exists, validate it (or proceed to fetch user data)
+      if (currentUser === null) {
+        navigate("/login"); // Ensure user is authenticated if currentUser is null
+      } else {
+        setUserInfo(currentUser?.other); // Set user info from Redux store
+        getAllNotes(); // Fetch notes if authenticated
+      }
+    }
+  }, [currentUser, navigate, dispatch]); 
  
 
   //get all notes
