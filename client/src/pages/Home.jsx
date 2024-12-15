@@ -11,6 +11,9 @@ import { toast } from "react-toastify";
 import Empty from "../components/Empty.jsx";
 import imgsrc from "../assets/imgsrc.png";
 import { useDispatch } from "react-redux";
+import {
+  signOutSuccess
+} from "../redux/userSlice.js";
 
 const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
