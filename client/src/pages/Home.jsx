@@ -32,7 +32,10 @@ const Home = () => {
       setUserInfo(currentUser?.other);
       getAllNotes();
     }
-  }, [currentUser]);
+  }, [currentUser,navigate]);
+ 
+
+ 
 
   //get all notes
   const getAllNotes = async () => {
