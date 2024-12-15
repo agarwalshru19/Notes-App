@@ -10,6 +10,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Empty from "../components/Empty.jsx";
 import imgsrc from "../assets/imgsrc.png";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -17,6 +18,7 @@ const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState({
     isShown: false,
     type: "add",
