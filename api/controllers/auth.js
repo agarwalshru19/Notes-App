@@ -61,6 +61,7 @@ export const login = async (req, res) => {
   httpOnly: true,
   secure: true, // Enable in production
   sameSite: "None", // Required for cross-origin cookies
+  maxAge: 7 * 24 * 60 * 60 * 1000,
 })
 
       .status(200)
