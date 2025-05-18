@@ -14,7 +14,7 @@ const AddEditNotes = ({ hanldeCloseModal, noteData, type, getAllNotes }) => {
     console.log("noteId", noteId);
     try {
       const res = await axios.post(
-        `https://notes-app-backend-b6wb.onrender.com/api/note/edit/${noteId}`,
+        `https://notes-app-backend-puy9.onrender.com/api/note/edit/${noteId}`,
         { title, content },
         { withCredentials: true }
       );
@@ -38,7 +38,7 @@ const AddEditNotes = ({ hanldeCloseModal, noteData, type, getAllNotes }) => {
   const addNewNote = async () => {
     try {
       const res = await axios.post(
-        "https://notes-app-backend-b6wb.onrender.com/api/note/add",
+        "https://notes-app-backend-puy9.onrender.com/api/note/add",
         { title, content },
         { withCredentials: true }
       );
